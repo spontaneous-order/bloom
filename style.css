@@ -1,0 +1,34 @@
+a {
+  --border: 5px;    /* the border width */
+  --color: #37E8FC; /* the color */
+  display: none;
+  font-size: 35px;
+  padding: 0.25em 1.2em;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  color: var(--color);
+  box-shadow: 
+    0 0 0 200px inset var(--c,#0000),
+    0 0 0 var(--border) inset var(--color);
+  background: linear-gradient(var(--color) 0 0) bottom/100% 0% no-repeat;
+  transition: color var(--t,0.3s), background-size 0.3s;
+  position: relative;
+}
+button {
+  --border: 5px;    /* the border width */
+  --color: #37E8FC; /* the color */
+  
+  font-size: 35px;
+  padding: 0.25em 1.2em;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  color: var(--color);
+  box-shadow: 
+    0 0 0 200px inset var(--c,#0000),
+    0 0 0 var(--border) inset var(--color);
+  background: linear-gradient(var(--color) 0 0) bottom/100% 0% no-repeat;
+  transition: color var(--t,0.3s), background-size 0.3s;
+  position: relative;
+}
