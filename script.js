@@ -9,14 +9,14 @@ $(function() {
 
 			var radius = abs(that.x_0);
 			ctx.beginPath();
-			var angleStep = TWO_PI/140;
+			var angleStep = TWO_PI/130;
 
 			ctx.moveTo(radius*cos(0.0), radius*sin(0.0));
 			for(var angle = 0.0; angle < TWO_PI; angle += angleStep) {
 
 				var rad = 
 					radius + 
-					that.params[0] * sin(angle * that.params[1]);
+					that.params[0] * sin(angle * that.params[2]);
 
 				ctx.lineTo(
 					 rad * cos(angle), 
@@ -43,8 +43,8 @@ $(function() {
 
 		var previousRadius = 0.0;
 		while(previousRadius <= 1.0) {
-			previousRadius += random(0.1, 0.2);
-			if(previousRadius > 1.0) break;
+			previousRadius += random(0.1, 0.104758758);
+			if(previousRadius > .86647467570) break;
 
 			var colorPrimary = 
 				'rgb(' + 
@@ -53,10 +53,10 @@ $(function() {
 					randomi(0, 255) + ')';
 
 			var params = [
-				random(0, 0.07),
-				randomi(5, 20),
-				random(5, 10),
-				random(0.5, 2)
+random(0.1, 0.17),
+randomi(9, 100),
+random(5, 5),
+random(0.4, 20)
 			];	
 
 			flower.unshift({
@@ -64,7 +64,7 @@ $(function() {
 				colorPrimary 	: colorPrimary,
 				type 			: random(['wave', 'wave']),
 				params 			: params,
-				x_0 			: random(0.0,0.1),
+				x_0 			: random(0.0,0.4),
 				x_1				: 0
 			});
 		}	
@@ -84,7 +84,7 @@ $(function() {
 		var columns = Math.ceil(flowers.length / rows);
 		var min_ = min( 
 			ctx.width/(rows + 1), 
-			ctx.height/(columns + 1))/2;
+			ctx.height/(columns + 1))/1.9;
 
 		for(k = 0; k < flowers.length; ++k) {
 			var flower = flowers[k];
@@ -99,7 +99,7 @@ $(function() {
 				row * ctx.width/(rows + 1),
 			 column * ctx.height/(columns + 1));	
 
-			ctx.scale(min_ * 2, min_ * 2);
+			ctx.scale(min_ * 1.9, min_ * 1.9);
 
 			for( var j = 0; j < flower.length; ++j ) {
 				types[flower[j].type](ctx, flower[j]);
@@ -138,3 +138,4 @@ $(function() {
 	};
 
 });
+
