@@ -5,7 +5,7 @@
     padding: 0px;
 }
 body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background: linear-gradient(-45deg, #000000, #000000, #000000, #000000);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;
@@ -169,10 +169,12 @@ body{
 
 }
 
-a {
-  --border: 5px;    /* the border width */
+
+button {
   --color: #37E8FC; /* the color */
   display: none;
+    margin: auto;
+  width: 100%;
   font-size: 35px;
   padding: 0.25em 1.2em;
   cursor: pointer;
@@ -180,16 +182,18 @@ a {
   font-weight: bold;
   color: var(--color);
   box-shadow: 
-    0 0 0 200px inset var(--c,#0000),
+    0 0 200px 200px inset var(--c,#0000),
     0 0 0 var(--border) inset var(--color);
   background: linear-gradient(var(--color) 0 0) bottom/100% 0% no-repeat;
   transition: color var(--t,0.3s), background-size 0.3s;
   position: relative;
 }
-button {
-  --border: 5px;    /* the border width */
+
+a {
   --color: #37E8FC; /* the color */
-  
+  text-align:center
+  margin: auto;
+  width: 100%;
   font-size: 35px;
   padding: 0.25em 1.2em;
   cursor: pointer;
@@ -197,7 +201,7 @@ button {
   font-weight: bold;
   color: var(--color);
   box-shadow: 
-    0 0 0 200px inset var(--c,#0000),
+    0 0 200px 200px inset var(--c,#0000),
     0 0 0 var(--border) inset var(--color);
   background: linear-gradient(var(--color) 0 0) bottom/100% 0% no-repeat;
   transition: color var(--t,0.3s), background-size 0.3s;
