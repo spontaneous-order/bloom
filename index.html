@@ -20,7 +20,8 @@ canvas { margin-top: 0px; max-width: 100%; }
 
 <script>
 document.addEventListener("DOMContentLoaded", async () => {
-  
+        document.querySelector("#mint").style.display = "inline-block";                 
+
 
 	const rarepress = new Rarepress();
   let account = await rarepress.init({ host: "https://rinkeby.rarepress.org/v0" })
@@ -32,27 +33,38 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.querySelector("canvas").toBlob(async (blob) => {
       let cid = await rarepress.add(blob)
- document.querySelector("img").setAttribute("src", "https://rinkeby.rarepress.org/ipfs/" + cid)
+  document.querySelector("img").setAttribute("src", "https://rinkeby.rarepress.org/ipfs/" + cid)
+      
+                if (cid) {
       let token = await rarepress.create({
         metadata: {
-          name: "mondriano",
-          description: "rectangles on canvas",
+          name: "No Name",
+          description: "Randomly generated art, curated by " + account,
           image: "/ipfs/" + cid,
           attributes: [
             { trait_type: "powered by", value: "Rarepress https://rarepress.org" },
             { trait_type: "curator", value: account },
             { trait_type: "date", value: new Date().toUTCString() },
+            { trait_type: "license", value: "DEMO PURPOSE ONLY. FROM https://thisartworkdoesnotexist.com" }
           ]
-        }
+        },
       })
-      document.querySelector("a").setAttribute("href", "https://rinkeby.rarible.com/token/" + token.id)
-      document.querySelector("a").innerHTML = "View on Rarible"                       
+     document.querySelector("#minted").setAttribute("href", "https://rinkeby.rarible.com/token/" + token.id)
       document.querySelector("#loader").style.display = "none";                                             
-      document.querySelector("a").style.display = "inline";                 
-
-
-
+      document.querySelector("#minted").style.display = "inline-block";                 
+ document.querySelector("#minted").addEventListener("click", (e) => {
+   window.open("https://rinkeby.rarible.com/token/" + token.id);
+ });
+    }
+      
+      
+      
     })
+    
+
+    
+    
+    
   })
 })
   
@@ -86,7 +98,7 @@ function download_image(){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script>
-// $('#a').click(save);
+//$('#download').click(save);
 
 function save(ev) {
   document.querySelector('canvas').toBlob((blob) => {
@@ -105,8 +117,10 @@ function save(ev) {
 
 <body>
   <div id="loader"></div>
-  <a id='minted' href="#" target="_blank">Hi!</a>
+
     <button id='mint'>Create NFT</button>
+    <button id='minted'>View your NFT</button>
+
 
   <img>
 </body>
